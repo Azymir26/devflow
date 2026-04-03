@@ -68,7 +68,7 @@ Thumbs.db
 
     // Stage and make initial commit
     run_git(path, &["add", "."]).context("failed to stage initial files")?;
-    if has_git_identity() {
+    if has_git_identity(path) {
         run_git(path, &["commit", "-m", "Initial commit"])
     } else {
         run_git(
@@ -198,7 +198,7 @@ pub fn push(message: &str) -> Result<()> {
 
     // Commit
     print_step("Committing...");
-    if has_git_identity() {
+    if has_git_identity(&cwd) {
         run_git(&cwd, &["commit", "-m", message]).context("failed to commit")?;
     } else {
         run_git(
@@ -246,15 +246,17 @@ fn print_step(msg: &str) {
     println!("  {} {}", "●".cyan(), msg);
 }
 
-/// Returns true if git has user.name and user.email configured.
-fn has_git_identity() -> bool {
+/// Returns true if git has user.name and user.email configured in the given dir.
+fn has_git_identity(dir: &Path) -> bool {
     Command::new("git")
         .args(["config", "user.name"])
+        .current_dir(dir)
         .output()
         .map(|o| o.status.success())
         .unwrap_or(false)
         && Command::new("git")
             .args(["config", "user.email"])
+            .current_dir(dir)
             .output()
             .map(|o| o.status.success())
             .unwrap_or(false)
