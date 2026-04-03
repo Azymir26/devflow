@@ -1,0 +1,17 @@
+[package]
+name = "devflow"
+version = "1.0.0"
+edition = "2021"
+description = "A CLI tool to manage Git projects faster"
+authors = ["Azymir"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+colored = "2"
+anyhow = "1"
+walkdir = "2"
+
+[profile.release]
+opt-level = 3
+strip = true
+lto = true
