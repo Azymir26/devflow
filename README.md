@@ -4,8 +4,6 @@
     <strong>Manage your Git projects faster from the command line.</strong>
   </p>
   <p align="center">
-    <a href="https://github.com/Azymir26/devflow/actions"><img src="https://img.shields.io/github/actions/workflow/status/Azymir26/devflow/ci.yml?branch=master&style=flat-square&logo=github&label=build" alt="Build Status"></a>
-    <a href="https://crates.io/crates/devflow"><img src="https://img.shields.io/crates/v/devflow?style=flat-square&logo=rust" alt="Crates.io"></a>
     <a href="https://github.com/Azymir26/devflow/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="License"></a>
     <a href="https://github.com/Azymir26/devflow"><img src="https://img.shields.io/github/stars/Azymir26/devflow?style=flat-square&logo=github" alt="Stars"></a>
   </p>
@@ -44,12 +42,6 @@ cp target/release/devflow ~/.cargo/bin/
 
 # Windows (PowerShell)
 cp .\target\release\devflow.exe $env:USERPROFILE\.cargo\bin\
-```
-
-### From crates.io
-
-```bash
-cargo install devflow
 ```
 
 ## Usage
